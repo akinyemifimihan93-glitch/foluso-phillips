@@ -1,0 +1,69 @@
+@import "tailwindcss";
+
+:root {
+  --background: #17191b;
+  --foreground: #f3f0e9;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+:focus-visible {
+  outline: 2px solid #b69a70;
+  outline-offset: 4px;
+}
+
+/* Smooth navigation between sections */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Subtle editorial entrance animation */
+@keyframes editorialReveal {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.editorial-reveal {
+  animation: editorialReveal 900ms ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .editorial-reveal {
+    animation: none;
+  }
+}
